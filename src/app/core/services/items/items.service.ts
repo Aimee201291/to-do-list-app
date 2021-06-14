@@ -19,4 +19,8 @@ export class ItemsService {
   getAllItems() {
     return this.http.get<Item[]>(`${environment.url_api}/all`);
   }
+
+  createItem(item: Item) {
+    return this.http.post(`${environment.url_api}/save`, item);
+  }
 }
