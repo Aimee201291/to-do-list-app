@@ -19,7 +19,6 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchItems();
-    //this.addItem();
   }
 
   fetchItems() {
@@ -40,6 +39,27 @@ export class ItemsComponent implements OnInit {
       console.log(item);
       this.fetchItems();
       this.newItem = "";
+    });
+  }
+
+  changeItemStatus(id: number, newItem: string) {
+    const editedItem: Partial<Item> = {
+      id: null,
+      name: newItem,
+      status: null,
+    };
+    this.itemsService.updateProduct(id, editedItem)
+    .subscribe(item => {
+      console.log(item);
+      this.fetchItems();
+    });
+  }
+
+  removeItem(id: number) {
+    this.itemsService.deleteItem(id)
+    .subscribe(data => {
+      console.log("Item eliminado exitosamente");
+      this.fetchItems();
     });
   }
 

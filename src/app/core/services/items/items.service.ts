@@ -23,4 +23,12 @@ export class ItemsService {
   createItem(item: Item) {
     return this.http.post(`${environment.url_api}/save`, item);
   }
+
+  updateProduct(id: number, changes: Partial<Item>) {
+    return this.http.put(`${environment.url_api}/${id}`, changes);
+  }
+
+  deleteItem(id: number) {
+    return this.http.delete(`${environment.url_api}/delete/${id}`);
+  }
 }

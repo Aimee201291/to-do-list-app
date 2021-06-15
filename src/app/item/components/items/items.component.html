@@ -1,4 +1,11 @@
 <div class="container-xl">
+	<div class="pt-3 pb-3">
+		<div class="form-group">
+		  <label for="inputItem">Nuevo item</label>
+		  <input type="email" [(ngModel)]="newItem" class="form-control" id="inputItem">
+		</div>
+		<button type="submit" class="btn btn-success" (click)="addItem(newItem)">Agregar</button>
+	</div>
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
@@ -8,7 +15,7 @@
 					</div>
 				</div>
             </div>
-			<table class="table table-striped table-hover">
+			<table class="table table-striped table-hover table-mb">
 				<thead>
 					<tr>
 						<th>Id</th>
@@ -21,23 +28,14 @@
 					<tr *ngFor="let item of items">
 						<td>{{ item.id }}</td>
 						<td>{{ item.name }}</td>
-						<td class="text-left"><input type="checkbox" [(ngModel)]="item.status"></td>
+						<td class="text-left"><input type="checkbox" (click)="changeItemStatus(item.id, item)" [(ngModel)]="item.status"></td>
 						<td>
-							<a href=""><i class="fa fa-pencil"></i></a>
+							<span style="cursor: pointer" class="fa fa-trash" (click)="removeItem(item.id)"></span>
 						</td>
-						<!--<td>{{ item.status }}</td>-->
 					</tr>
 				</tbody>
 			</table>
 		</div>
-	</div>
-	<!--<form class="pt-3">-->
-	<div class="pt-3 pb-3">
-		<div class="form-group">
-		  <label for="inputItem">Nuevo item</label>
-		  <input type="email" [(ngModel)]="newItem" class="form-control" id="inputItem">
-		</div>
-		<button type="submit" class="btn btn-primary" (click)="addItem(newItem)">Agregar</button>
-	</div>
-	<!--</form>-->        
+	</div>      
 </div>
+
