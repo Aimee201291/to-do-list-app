@@ -1,5 +1,6 @@
 # To-do list app
 
+![](https://i.imgur.com/iyZidWy.png)
 
 ## Tecnologías usadas
 
